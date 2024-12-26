@@ -7,7 +7,8 @@ const app = express();
 const corsOptions = {
     origin: 'https://sylphx.site', // Replace with your actual frontend domain
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
+    allowedHeaders: ['Content-Type'],
+    credentials: true  // Allow credentials if needed (e.g., cookies, authorization headers)
 };
 
 app.use(cors(corsOptions)); // Enable CORS with the specified options
@@ -45,7 +46,7 @@ app.post('/key', (req, res) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
